@@ -3,13 +3,13 @@ CLI tool to easily add and remove padding to/from tilesets
 
 **Java 17 or newer is required!**
 
-INSTALLATION **LINUX ONLY** (recommended)
+INSTALLATION **LINUX ONLY** (recommended)  
 To install on Linux, download the "tilepadder linux installer.zip" file, extract it, make install.sh runnable if it isn't already, then run it.
 After installation, you should have access to the "tilepadder" command in your terminal.
 
 
 
-TO USE ON ANY OS
+TO USE ON ANY OS  
 To use on any device, download "TilePadder.java", and place the file where you want. Let's use your desktop for an example.
 To run it, the usage is similar to below, but replace `tilepadder` with `java [PATH TO TILE PADDER JAVA FILE]`.
 For example, on Windows if you wanted to add two pixels to a tileset located on your desktop, the command might look something like this:
@@ -18,7 +18,7 @@ For example, on Windows if you wanted to add two pixels to a tileset located on 
 
 
 
-USAGE
+USAGE  
 To use tilepadder, the syntax is the following:
 
 `tilepadder [PATH TO TILESET] [TILE SIZE] [PADDING AMOUNT]`
@@ -29,7 +29,7 @@ use a negative number to remove padding from a tileset that already has some
 
 
 
-HELP
+HELP  
 If you need to see usage in the future via terminal, type
 `tilepadder -h`
 or
@@ -39,7 +39,7 @@ simply run `tilepadder` with no arguments.
 
 
 
-USAGE EXAMPLES
+USAGE EXAMPLES  
 Add two pixels of padding:
 `tilepadder /home/phiphifier/Desktop/tileset.png 32 2`
 
@@ -48,6 +48,6 @@ Remove two pixels of padding
 
 
 
-MISC
+MISC  
 Feel free to use, modify, and/or redistribute this code as you please. If you want to modify the logic, the uncompiled source code can be found on my github at
 https://www.github.com/phiphifier/tilepadder (TilePadder.java)
