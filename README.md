@@ -1,5 +1,6 @@
 # tileset padder/extruder
-CLI tool to easily add and remove padding to/from tilesets
+CLI tool to easily add and remove padding to/from tilesets  
+This tool adds padded borders by extruding the edge pixels, preventing flickering or gaps (seams) between tiles in game engines.
 
 **Java 17 or newer is required!**
 
