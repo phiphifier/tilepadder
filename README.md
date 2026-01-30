@@ -14,7 +14,7 @@ To use on any device, download "TilePadder.java", and place the file where you w
 To run it, the usage is similar to below, but replace `tilepadder` with `java [PATH TO TILE PADDER JAVA FILE]`.
 For example, on Windows if you wanted to add two pixels to a tileset located on your desktop, the command might look something like this:
 
-`java C:\\Users\[your name]\Downloads\TilePadder.java C:\\Users\[your name]\Desktop\tileset.png 32 2`
+`java C:\\Users\[your name]\Desktop\TilePadder.java C:\\Users\[your name]\Desktop\tileset.png 32 2`
 
 
 
