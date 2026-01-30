@@ -53,6 +53,19 @@ Remove two pixels of padding
 
 
 
+EXPOSED METHODS (for if you want to integrate this into something)  
+To add tile padding to a BufferedImage during runtime, import Tilepadder.java, call
+`TilePadder.addPadding([tileset image][tile size][padding amount][print progress])`
+This method will return null if passed a value <= 0  
+
+To remove padding to a BufferedImage during runtime, import Tilepadder.java, call
+`TilePadder.removePadding([tileset image][tile size][padding amount][print progress])`
+This method will return null if passed a value >= 0  
+
+Unless you wan't "x% complete" spammed in your console, be sure pass false to [print progress]
+
+
+
 MISC  
 Feel free to use, modify, and/or redistribute this code as you please. If you want to modify the logic, the uncompiled source code can be found on my github at
 https://www.github.com/phiphifier/tilepadder (TilePadder.java)
