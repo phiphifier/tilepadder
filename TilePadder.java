@@ -52,6 +52,10 @@ public class TilePadder {
 		// CHECK PADDING AMOUNT
 		try {
 			paddingAmount = Integer.parseInt(args[2]);
+            if (paddingAmount == 0) {
+                System.out.println("Padding amount can't be zero!");
+                return;
+            }
 		}
 		catch(Exception e) {
 			System.out.println("Padding amount must be a valid integer!");
