@@ -1,4 +1,4 @@
-# tile padder/extruder
+# tileset padder/extruder
 CLI tool to easily add and remove padding to/from tilesets
 
 **Java 17 or newer is required!**
