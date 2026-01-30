@@ -86,38 +86,40 @@ public class TilePadder {
 	
 	public static BufferedImage addPadding(BufferedImage tileset, int tileSize, int paddingAmount, boolean printProgress) {
 		BufferedImage output = null;
-		int widthInTiles = tileset.getWidth()/tileSize;
-		int heightInTiles = tileset.getHeight()/tileSize;
-		int newImageWidth = tileset.getWidth()+paddingAmount*2*widthInTiles;
-		int newImageHeight = tileset.getHeight()+paddingAmount*2*heightInTiles;
-		output = new BufferedImage(newImageWidth, newImageHeight, BufferedImage.TYPE_INT_ARGB);
-		Graphics2D g2 = (Graphics2D)output.getGraphics();
-		int totalTilesToBePadded = widthInTiles*heightInTiles;
-		int tilesPadded = 0;
-		int lastPercent = 0;
-		for (int y = 0; y < heightInTiles; y++) {
-			for (int x = 0; x < widthInTiles; x++) {
-				BufferedImage currentTile = tileset.getSubimage(x*tileSize, y*tileSize, tileSize, tileSize);
-				int tileStartX = x*tileSize+paddingAmount*x*2+paddingAmount;
-				int tileStartY = y*tileSize+paddingAmount*y*2+paddingAmount;
-				g2.drawImage(currentTile, tileStartX, tileStartY, tileSize, tileSize, null);
-				g2.drawImage(currentTile.getSubimage(0, 0, tileSize, 1), tileStartX, tileStartY-paddingAmount, tileSize, paddingAmount, null);
-				g2.drawImage(currentTile.getSubimage(0, tileSize-1, tileSize, 1), tileStartX, tileStartY+tileSize, tileSize, paddingAmount, null);
-				g2.drawImage(currentTile.getSubimage(0, 0, 1, tileSize), tileStartX-paddingAmount, tileStartY, paddingAmount, tileSize, null);
-				g2.drawImage(currentTile.getSubimage(tileSize-1, 0, 1, tileSize), tileStartX+tileSize, tileStartY, paddingAmount, tileSize, null);
-				g2.drawImage(currentTile.getSubimage(0, 0, 1, 1), tileStartX-paddingAmount, tileStartY-paddingAmount, paddingAmount, paddingAmount, null);
-				g2.drawImage(currentTile.getSubimage(0, tileSize-1, 1, 1), tileStartX-paddingAmount, tileStartY+tileSize, paddingAmount, paddingAmount, null);
-				g2.drawImage(currentTile.getSubimage(tileSize-1, 0, 1, 1), tileStartX+tileSize, tileStartY-paddingAmount, paddingAmount, paddingAmount, null);
-				g2.drawImage(currentTile.getSubimage(tileSize-1, tileSize-1, 1, 1), tileStartX+tileSize, tileStartY+tileSize, paddingAmount, paddingAmount, null);
-				tilesPadded++;
-				int completionPercent = (int)((float)tilesPadded/(float)totalTilesToBePadded*100f);
-				if (lastPercent != completionPercent) {
-					if (printProgress) System.out.println(completionPercent+"% complete");
-					lastPercent = completionPercent;
+		if (paddingAmount >= 0) {
+			int widthInTiles = tileset.getWidth()/tileSize;
+			int heightInTiles = tileset.getHeight()/tileSize;
+			int newImageWidth = tileset.getWidth()+paddingAmount*2*widthInTiles;
+			int newImageHeight = tileset.getHeight()+paddingAmount*2*heightInTiles;
+			output = new BufferedImage(newImageWidth, newImageHeight, BufferedImage.TYPE_INT_ARGB);
+			Graphics2D g2 = (Graphics2D)output.getGraphics();
+			int totalTilesToBePadded = widthInTiles*heightInTiles;
+			int tilesPadded = 0;
+			int lastPercent = 0;
+			for (int y = 0; y < heightInTiles; y++) {
+				for (int x = 0; x < widthInTiles; x++) {
+					BufferedImage currentTile = tileset.getSubimage(x*tileSize, y*tileSize, tileSize, tileSize);
+					int tileStartX = x*tileSize+paddingAmount*x*2+paddingAmount;
+					int tileStartY = y*tileSize+paddingAmount*y*2+paddingAmount;
+					g2.drawImage(currentTile, tileStartX, tileStartY, tileSize, tileSize, null);
+					g2.drawImage(currentTile.getSubimage(0, 0, tileSize, 1), tileStartX, tileStartY-paddingAmount, tileSize, paddingAmount, null);
+					g2.drawImage(currentTile.getSubimage(0, tileSize-1, tileSize, 1), tileStartX, tileStartY+tileSize, tileSize, paddingAmount, null);
+					g2.drawImage(currentTile.getSubimage(0, 0, 1, tileSize), tileStartX-paddingAmount, tileStartY, paddingAmount, tileSize, null);
+					g2.drawImage(currentTile.getSubimage(tileSize-1, 0, 1, tileSize), tileStartX+tileSize, tileStartY, paddingAmount, tileSize, null);
+					g2.drawImage(currentTile.getSubimage(0, 0, 1, 1), tileStartX-paddingAmount, tileStartY-paddingAmount, paddingAmount, paddingAmount, null);
+					g2.drawImage(currentTile.getSubimage(0, tileSize-1, 1, 1), tileStartX-paddingAmount, tileStartY+tileSize, paddingAmount, paddingAmount, null);
+					g2.drawImage(currentTile.getSubimage(tileSize-1, 0, 1, 1), tileStartX+tileSize, tileStartY-paddingAmount, paddingAmount, paddingAmount, null);
+					g2.drawImage(currentTile.getSubimage(tileSize-1, tileSize-1, 1, 1), tileStartX+tileSize, tileStartY+tileSize, paddingAmount, paddingAmount, null);
+					tilesPadded++;
+					int completionPercent = (int)((float)tilesPadded/(float)totalTilesToBePadded*100f);
+					if (lastPercent != completionPercent) {
+						if (printProgress) System.out.println(completionPercent+"% complete");
+						lastPercent = completionPercent;
+					}
 				}
 			}
+			g2.dispose();
 		}
-		g2.dispose();
 		return output;
 	}
 	
@@ -156,7 +158,7 @@ public class TilePadder {
 	
 	
 	
-	public static void writeOutputToDisk(BufferedImage output, String outputLocation) {
+	private static void writeOutputToDisk(BufferedImage output, String outputLocation) {
 		try {
 			final String outputDefaultName = "processed tileset";
 			String outputName = outputDefaultName+".png";
