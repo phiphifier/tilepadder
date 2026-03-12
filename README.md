@@ -4,7 +4,7 @@ This tool adds padded borders by extruding the edge pixels, preventing flickerin
   
 **Pixel Extrusion:** Automatically bleeds edge pixels into the padding to prevent texture seams.  
 **Bi-Directional:** Easily add padding for engine imports or remove it to return to a "clean" grid.  
-**Lightweight:** No heavy dependencies—just raw Java power.  
+**Lightweight:** No heavy dependencies.  
   
 **Java 17 or newer is required!**
 
